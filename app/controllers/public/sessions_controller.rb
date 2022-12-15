@@ -17,6 +17,7 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  before_action :reject_inactive_customer,only:[:create]
 
   protected
   
@@ -24,6 +25,7 @@ class Public::SessionsController < Devise::SessionsController
     @customer= Costomer.find_by(email:params[:customer][:email])
     return if !@customer
     if @customer.valid_password?(params[:customer][:password])
+      redirect_to new_customer_registration_path
     end
   end
   # If you have extra params to permit, append them to the sanitizer.
