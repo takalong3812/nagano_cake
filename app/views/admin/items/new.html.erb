@@ -1,3 +1,4 @@
+<main>
 <div class="container">
   <h3>商品新規登録</h3>
   <div class="row">
@@ -10,21 +11,39 @@
        <table class="admin_items">
         <tr>
           <th>商品画像</th>
-          <td><%= f.attachment_field :image %></td>
+          <td><%= f.file_field:image,accept: "image/*" %></td>
         </tr>
         <tr>
           <th>商品名</th>
-          <td><%= f.text_field :name %></td>
+          <td><%= f.text_field:name %></td>
         </tr>
         <tr>
           <th>商品説明</th>
-          <td><%= f.text_area :introduction %></td>
+          <td><%= f.text_area:introduction %></td>
         </tr>
         <tr>
           <th>ジャンル</th>
-          <td><%= f.collection_select (:genre_id,@genre, :id, :name , prompt: "選択してください") %></td>
+          <td><%= f.collection_select(:genre_id, @genres, :id, :name , prompt: "選択してください") %></td>
         </tr>
-        
-          
+        <tr>
+          <th>税抜価格</th>
+          <td><%= f.text_field:price %>円</td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td class="col-md-3">
+            <%= f.radio_button :is_active, :true %>
+            <%= f.label :is_active, "販売中" %>
+            <%= f.radio_button :is_active, :false %>
+            <%= f.label :is_active, "販売停止中" %>
+          </td>  
+        </tr>
+       </table>
+       <br>
+       <%= f.submit "新規登録" , class: 'btn btn-primary' %>
+       <% end %>
+      </div>
+     </div>
+</main>          
           
           

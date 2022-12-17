@@ -10,10 +10,18 @@ class Admin::ItemsController < ApplicationController
     if @item.save
         redirect_to admin_item_path(@item.id)
     else
-     flash.now{:alert] = "もう一度入力し直してください"
+     frash.now[:alert] = "もう一度入力し直してください"
      render "index"
     end
-  end    
+ 
+  end  
+  
+  
+  private
+  
+  def item_params
+    params.require(:item).permit(:name, :introdustion, :price, :genre_id, :is_active, :image)
+  end
   
   
       
