@@ -1,29 +1,79 @@
-<h2>Sign up</h2>
+<div class="container">
+ <h2>新規会員登録</h2>
+ 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @customer, url: customer_registration_path, local:true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-group row">
+    <%= f.label :"名前", class: "col-md-3" %>
+    <%= f.label :"(姓)" %>
+    <%= f.text_field :last_name, autofocus: true, placeholder: "",class: "col-md-2 form-control" %>
+    <%= f.label :"(名)", class: "ml-3" %>
+    <%= f.text_field :first_name, placeholder: "", class: "col-md-2 form-control" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  
+  <div class="form-group row">
+    <%= f.label :"フリガナ" , class: "col-md-3" %>
+    <%= f.label :"(セイ)" %>
+    <%= f.text_field :last_name_kana, autofocus: true, placeholder: "", class: "col-md-2 form-control" %>
+    <%= f.label :"(メイ)", class: "ml-3" %>
+    <%= f.text_field :first_name_kana, placeholder: "", class: "col-md-2 form-control" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  
+   
+  <div class="dorm-group row">
+    <%= f.label :"メールアドレス", class: "col-md-3" %>
+    <%= f.email_field:email, placeholder: "", class: "col-md-5 form-control" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  
+  
+  <div class="form-group row">
+     <%= f.label :" 郵便番号(ハイフン無し) ", class:"col-md-3" %>
+     <%= f.text_field :postal_code, placeholder: "", class: "col-md-5 form-control" %>
+  </div>  
+    
+    
+  <div class="form-group row">
+      <%= f.label :"住所", class: "col-md-3" %>
+      <%= f.text_field :address, placeholder: "",class:"col-md-5 form-control" %>
+  </div>
+  
+  
+  <div class="form-group row">
+      <%= f.label :"電話番号(ハイフン無し)", class: "col-md-3" %>
+      <%= f.text_field :telephone_number,placeholder: "",class:"col-md-5 form-control" %>
+  </div>
+  
+  <div class="form-group row">
+      <%= f.label :"パスワード(６文字以上)", class: "col-md-3" %>
+      <%= f.password_field :password, class: "col-md-5 form-control" %>
+  </div>
+  
+  
+  <div class="form-group row">
+    <%= f.submit "新規登録", class: "btn btn-success col-md-1 offset-1" %>
   </div>
 <% end %>
-
-<%= render "public/shared/links" %>
+  
+    
+  <div>
+    既に登録済みの方は
+  <br>
+    <%= link_to "こちら", "/customers/sign_in" %>からログインして下さい
+  </div>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  
+  
