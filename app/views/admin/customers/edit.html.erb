@@ -7,16 +7,53 @@
     <%= form_with model:@customer, url: admin_customer_path, method: :PATCH, local:true do |f| %>
     <div class="col">
         
-       
-       <%= render "layouts/error_message", model: f.object %>
-       
+      
     </div>
     <div class="form-group row">
         <div class="col-md-3">会員ID</div>
         <div class="col-md-2"><%= @customer.id %></div>
     </div>
     <div class="form-group row">
-        <%= f.label :氏名,>
-        
+        <%= f.label :氏名, class: "col-md-3" %>
+        <%= f.text_field :last_name, class: "col-md-2 form-control" %>
+        <%= f.text_field :first_name, class: "col-md-2 form-control ml-3" %>
+    </div>
+    <div class="form-group row"> 
+        <%= f.label :フリガナ, class: "col-md-3" %>
+        <%= f.text_field :last_name_kana, class: "col-md-2 form-control" %>
+        <%= f.text_field :first_name_kana, class: "col-md-2 form-control ml-3" %>
+    </div>
+    <div class="form-group row">
+        <%= f.label :郵便番号, class: "col-md-3" %>
+        <%= f.text_field :postal_code, class: "col-md-5 form-control" %>
+    </div>
+    <div calss="form-group row">
+        <%= f.label :住所, class: "col-md-3" %>
+        <%= f.text_field :address, class: "col-md-5 form-cntrol" %>
+    </div>
+    <div class="form-group row">
+        <%= f.label :電話番号, class: "col-md-3" %>
+        <%= f.text_field :telephone_number, class: "col-md-5 form-control" %>
+    </div>    
+    <div class="form-group row">
+        <%= f.label :メールアドレス, class: "col-md-3" %>
+        <%= f.email_field :email, class: "col-md-5 form-control" %>
+    </div>
+    <div class="form-group row">
+        <%= f.label :会員ステータス, class: "col-md-3" %>
+        <label><%= f.radio_button :is_deleted?, false, checked: true %>有効</label>
+        <label class="ml-3"><%= f.radio_button :is_deleted, true %>退会</label>
+    </div>
+      
+      
+    <div class="form-group row">
+        <%= f.submit "変更を保存", class: "btn btn-success col-md-2 offset-3" %>
+    </div>
+   <% end %>
+   </div>
+      
+      
+      
+      
        
     
