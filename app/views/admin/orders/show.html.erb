@@ -14,4 +14,45 @@
     <tr>
       <th>注文日</th>
       <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-          
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <td><%= @order.address %></td>
+    </tr>
+    <tr>
+      <th>支払い方法</th>
+      <th><%= Order.payment_methods_i18n[@order.way_of_paying] %></th>
+    </tr>
+    <tr>
+      <%= form_with(model: @order, url:admin_order_path, local: true) do |f| %>
+      <th>注文ステータス</th>
+      <td>
+        
+        <%= f.select :status, ['入金待ち','入金確認','製作中','発送準備中','発送済み'], :selected => @order.status %>
+        <%= f.submit "更新", class:"btn btn-success" %>
+      </td>
+      <% end %>
+    </tr>
+   </table>
+  </div>
+  <div class="row">
+   <div class="col-7">
+     <table class="table table-bordered">
+       <thead>
+         <th>商品名</th>
+         <th>単価</th>
+         <th>数量</th>
+         <th>小計</th>
+         <th>製作ステータス</th>
+       </thead>
+       <tbody>
+         <% @order_details.each do |order_detail| %>
+         <tr>
+           <td><%= order_details. item.name %></td>
+           <td><%= (order_detail.price).to_s(:delimited) %> 円</td>
+           <td><%= (order_detail.amount).to_s(:delimited) %> 個</td>
+           <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
+  
+           
+           
+           
