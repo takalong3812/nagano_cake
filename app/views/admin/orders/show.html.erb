@@ -52,7 +52,32 @@
            <td><%= (order_detail.price).to_s(:delimited) %> 円</td>
            <td><%= (order_detail.amount).to_s(:delimited) %> 個</td>
            <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
-  
-           
-           
-           
+           <% @total += order_detail.price * order_detail.amount %>
+           <td>
+             <div>
+               
+               
+               <%= form_with(model:[@order,oder_detail], url: admin_order_order_detail_path(@order,order_detail), local:true) do |f| %>
+                 <%= f.select :making_status, options_for([['着手不可'],['製作待ち'],['製作中'],['製作完了']],{:selected => order_details.making_status}) %>
+                 <%= f.submit "更新", class:"btn btn-success" %>
+               <% end %>  
+             </div>
+           </td>  
+         </tr>
+         <% end %>
+        </tbody>
+      </table>
+     </div>
+     <div calss="col-4">
+       <table>
+         <tr>
+           <th>商品合計</th>
+           <td><%= (@total).to_s(:delimited) %>円</td>
+         </tr>
+         <tr>
+           <th>送料</th>
+           <td>800円</td>
+         </tr>  
+       </table>
+     </div>
+    </div>
