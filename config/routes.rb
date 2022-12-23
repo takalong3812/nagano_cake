@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :orders
   end
   
+    root to: 'homes#top'
+  
   namespace :public do
     resources :items
     root to: 'homes#top'
