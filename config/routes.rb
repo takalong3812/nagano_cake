@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   
   namespace :public do
     resources :items
+    resources :customers
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
   end

@@ -17,7 +17,7 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  before_action :reject_inactive_customer,only:[:create]
+  #before_action :reject_inactive_customer,only:[:create]
 
   protected
   
