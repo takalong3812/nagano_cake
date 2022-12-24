@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   
     root to: 'homes#top'
+    get '/about' => 'homes#about', as: 'about'
   
   namespace :public do
     resources :items
