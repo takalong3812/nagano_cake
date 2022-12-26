@@ -23,10 +23,12 @@ Rails.application.routes.draw do
   namespace :public do
     resources :items
     resources :customers,except: [:new, :index]
-    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    resources :addresses,except: [:new, :show]
+    get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
+    
   end
 
 end
