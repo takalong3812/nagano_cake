@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
   
   namespace :public do
-    resources :items
+    resources :items, only: [:index, :show]
     resources :customers,except: [:new, :index]
     resources :addresses,except: [:new, :show]
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
