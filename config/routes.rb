@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     patch 'customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
-    
+    resources :cart_items, only: [:index, :create, :update, :destroy]  
   end
 
 end

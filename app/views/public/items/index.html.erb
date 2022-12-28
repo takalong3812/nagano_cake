@@ -1,24 +1,22 @@
+<%= render 'genre', genres:@genres %>
 <div class="container px-5 px-sm-0">
-    <div class="row">
-        
-        
-        
+    <div class="row"
         <div class="col-10">
          <h2>商品一覧</h2>
          <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cola-md-4 row-eq-height">
               <% @items.each do |item| %>     
                <div class="col">
-                  <div class="card mx-auto mt-4 bg-dark text-white">
-                      <%= link_to "public/items/:id" do %>
-                       <%= f.file_field :image, accept:"image/*", size: "200x200", class:"card-img-top", fallback:"no_imag.jpg" %>   
+                  <div class="card mx-auto mt-4 bg-white text-dark">
+                      <%= link_to "items/:id" do %>
+                       <%= file_field :image, size: "80x80", class:"card-img-top", fallback:"no_imag.jpg" %>   
                       <% end %>
                       <div class="card-body">
                           <div class= "card-title">
-                            <%= link_to item.name, item_path(item), class:"text-white" %>
+                            <%= link_to item.name, public_item_path(item), class:"text-black" %>
                           </div>
                           <div class="card-text">
-                              <%= (item.with_tax_price).to_s(:delimted) + "円" %>
+                              <%= (item.price).to_s(:delimted) + "円" %>
                           </div>
                       </div>
                   </div>
@@ -26,9 +24,7 @@
               <% end %>
             </div>
          </div>
-         <div class="d-flex pagenation justify-content-center mt-5 mb-3">
-             <%= paginaate @item %>
          </div>
         </div>
     </div>    
-</div>        
+

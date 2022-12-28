@@ -1,0 +1,19 @@
+<div class="col-md-3 my-5">
+  <table class="list-box table-bordered">
+    <thead class="list-box-genre text-center">
+     <tr>
+        <th>ジャンル一覧</th>
+     </tr> 
+    </thead>
+    <tbody class="list-box-item">
+        <% genres.each do |genre| %>
+        <tr>
+          <td>
+             <%= genre.name %>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>  
+        

@@ -1,0 +1,26 @@
+<%= render 'genre', genres:@genres %>
+<div class= "container">
+  <div class= "row">
+     <div class= "mt-5 d-flex item-show" >
+         <div class="image-box mr-4">
+             <%= file_field :image, size: "200x200", class:"card-img-top", fallback:"no_imag.jpg" %>
+         </div>
+         <div class="introduction-box">
+          <h4><%= @item.name %></h4>
+          <div class="w-auto h-50"><%= @item.introduction %></div>
+          <strong>¥<%= @item.add_tax_price.to_s(:delimited) %></strong>(税込)
+          <%= form_with(model:@cart_item, url:public_cart_items_path, local: true, method: :post, class:"form-inline mt-2") do |f| %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.hidden_field :customer_id, value: current_customer.id %>
+            <%= f.select :amount, options_for_select((1..10).to_a), placeholder: "個数選択" %>
+            <% if @item.is_active == true %>
+              <%= f.submit "カートに入れる", class:"btn btn-primary btn-sm ml-4" %>
+            <% else %>
+              <p class="btn-danger btn-sm ml-4">売り切れ</p>
+            <% end %>
+          <% end %>
+         </div>
+        </div>
+       </div>
+      </div>
+    
