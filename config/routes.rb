@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
   
   namespace :public do
+    resources :orders
+    post 'orders/confirm' => 'orders#confirm'
     resources :items, only: [:index, :show]
     resources :customers,except: [:new, :index]
     resources :addresses,except: [:new, :show]

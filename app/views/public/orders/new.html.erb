@@ -1,0 +1,63 @@
+<div class="nav mt-3">
+      <li class="nav-form current" style="background-color: #c00000;"></li>
+      <li class="arrow text-white">→</li>
+      <li class="nav-form">確認</li>
+      <li class="arrow text-white">→</li>
+      <li class="nav-form">完了</li>
+</div>
+
+<h1 class="text-white">注文情報入力</h1>
+<div class="field mt-3 text-white" style="background-color: #343a40; opacity: 0.8;">
+    <div class="ml-5 pd-5">
+    <h3>支払方法</h3>
+    <%= form_with model: @order, url:public_orders_confirm_path, local: true do |f| %>
+     <div class="ml-5">
+        <%= f.radio_button :way_of_paying, @credit_card %>
+        <%= f.label :way_of_paying, @credit_card_ja %><br>
+        <%= f.radio_button :way_of_paying, @transfer %>
+        <%= f.label :way_of_paying, @transfer_ja %>
+     </div>   
+    <h3>お届け先</h3>
+     <div class="ml-5">
+         <%= f.radio_button :select_address, 0, checked:true %>
+         <%= f.label :select_address, "ご自身の住所" %><br>
+          <p class="ml-3">
+             <%= current_customer.address %><br>
+             <%= current_customer.last_name %><%= current_customer.first_name %><br>
+          </p>
+     </div>
+     <div class="ml-5">
+         <%= f.radio_button :select_address, 1 %>
+         <%= f.label :select_address, "登録住所から選択" %><br>
+          <p class="ml-3">
+              <%= f.collection_select :address_id, @addresses, :id, :address %>
+          </p>
+     </div>
+     <div class="ml-5">
+         <%= f.radio_button :select_address, 2 %>
+         <%= f.label :select_address, "新しいお届け先" %>
+         <div class="ml-3">
+             <%= f.label :"郵便番号（ハイフン無し）" %>
+             <%= f.text_field :postal_code %>
+             <%= f.label :"住所" %>
+             <%= f.text_field :address %>
+             <%= f.label :"宛名" %>
+             <%= f.text_field :name %>
+         </div>
+     </div>
+     <div class="text-center">
+         <%= f.submit "確認画面へ進む", class:"btn btn-info my-3" %>
+     </div>
+    <% end %>
+  </div>
+  </div>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
