@@ -19,23 +19,23 @@
      </div>   
     <h3>お届け先</h3>
      <div class="ml-5">
-         <%= f.radio_button :select_address, 0, checked:true %>
-         <%= f.label :select_address, "ご自身の住所" %><br>
+         <%= f.radio_button :address, 0, checked:true %>
+         <%= f.label :address, "ご自身の住所" %><br>
           <p class="ml-3">
              <%= current_customer.address %><br>
              <%= current_customer.last_name %><%= current_customer.first_name %><br>
           </p>
      </div>
      <div class="ml-5">
-         <%= f.radio_button :select_address, 1 %>
-         <%= f.label :select_address, "登録住所から選択" %><br>
+         <%= f.radio_button :address, 1 %>
+         <%= f.label :address, "登録住所から選択" %><br>
           <p class="ml-3">
-              <%= f.collection_select :address_id, @addresses, :id, :address %>
+              <%= f.collection_select :address, @addresses, :id, :address %>
           </p>
      </div>
      <div class="ml-5">
-         <%= f.radio_button :select_address, 2 %>
-         <%= f.label :select_address, "新しいお届け先" %>
+         <%= f.radio_button :address, 2 %>
+         <%= f.label :address, "新しいお届け先" %>
          <div class="ml-3">
              <%= f.label :"郵便番号（ハイフン無し）" %>
              <%= f.text_field :postal_code %>

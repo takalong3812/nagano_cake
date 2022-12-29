@@ -12,6 +12,9 @@ class Public::OrdersController < ApplicationController
    def confirm
      @cart_items= current_customer.cart_items
      @order= Order.new(order_params)
+     @order.shipping_fee= 800
+     @total_price_except_shipping_fee= @cart_items.inject(0) {|sum, item| sum + item.subtotal }
+     @billing_amount= @total_price_except_shipping_fee + @order.shipping_fee
    end
    
    
