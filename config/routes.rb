@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :orders
     post 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanks', to: 'orders#thanks'
     resources :items, only: [:index, :show]
     resources :customers,except: [:new, :index]
     resources :addresses,except: [:new, :show]
