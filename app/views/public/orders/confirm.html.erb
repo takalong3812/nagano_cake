@@ -18,7 +18,7 @@
    </tr> 
   </thead>
   <tbody>
-     <% @cart_items.each do |f| %>
+     <% @cart_item.each do |f| %>
      <tr class="text-right">
        <th class= "text-center"><%= f.item.name %></th>
        <td><%= f.item.with_tax_price.to_s(:delimited) %>円</td>
@@ -54,7 +54,7 @@
 <table class="table table-borderless table-dark" style="opacity: 0.8;"> 
   <tr>
     <th>支払方法</th>
-    <td><%= @order.way_of_paying %></td>
+    <td><%= @order.payment_method_i18n %></td>
   </tr>
   <tr>
       <th><お届け先</th>

@@ -34,11 +34,9 @@
       <div class="row">
         <div class="col-md-3 d-flex flex-column">
           <h5 class="font-weight-bold my-3 d-inline-flex">配送先</h5>
+          <%= link_to "一覧を見る", public_addresses_path, class: "btn btn-info ml-5 mb-3" %>
           <h5 class="font-weight-bold my-3 d-inline-flex">注文履歴</h5>
-        </div>
-        <div class="col-md-3 d-flex flex-column">
-          
-         
+          <%= link_to "一覧を見る", public_orders_path, class: "btn btn-info ml-4 mb-3" %>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@
          <div class="introduction-box">
           <h4><%= @item.name %></h4>
           <div class="w-auto h-50"><%= @item.introduction %></div>
-          <strong>¥<%= @item.add_tax_price.to_s(:delimited) %></strong>(税込)
+          <strong>¥<%= @item.with_tax_price.to_s(:delimited) %></strong>(税込)
           <%= form_with(model:@cart_item, url:public_cart_items_path, local: true, method: :post, class:"form-inline mt-2") do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <%= f.hidden_field :customer_id, value: current_customer.id %>

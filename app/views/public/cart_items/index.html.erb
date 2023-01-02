@@ -23,7 +23,7 @@
           </td>
           <td><%= cart_item.item.with_tax_price.to_s(:delimited) + "円" %></td>
           <td>
-             <%= form_with model: cart_item ,local: true do |f| %>
+             <%= form_with model: @cart_item, local: true do |f| %>
                <%= f.select :amount, *[1..10] %>
                <%= f.submit "変更", class:"btn btn-light" %>
              <% end %>
@@ -42,7 +42,7 @@
            <table class="table table-borderless table-dark" style="opacity: 0.8;">
              <tr>
               <td>合計金額</td>
-              <td><%= @total.round.to_s(:delimited) + "円" %></td>
+              <td><%= @total.floor.to_s(:delimited) + "円" %></td>
              </tr>
            </table>
        </div>

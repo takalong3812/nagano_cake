@@ -8,7 +8,7 @@
               <% @items.each do |item| %>     
                <div class="col">
                   <div class="card mx-auto mt-4 bg-white text-dark">
-                      <%= link_to "items/:id" do %>
+                      <%= link_to public_item_path(item) do %>
                        <%= file_field :image, size: "80x80", class:"card-img-top", fallback:"no_imag.jpg" %>   
                       <% end %>
                       <div class="card-body">
@@ -16,7 +16,7 @@
                             <%= link_to item.name, public_item_path(item), class:"text-black" %>
                           </div>
                           <div class="card-text">
-                              <%= (item.price).to_s(:delimted) + "円" %>
+                              <%= (item.with_tax_price).to_s(:delimted) + "円" %>
                           </div>
                       </div>
                   </div>
