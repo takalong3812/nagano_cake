@@ -1,3 +1,4 @@
+<div class="container">
 <div class="row">
   <div class="col m-3">
     <h3 class="text-white">注文履歴一覧</h3>
@@ -22,11 +23,11 @@
      </td>
             
             <td>
-               <% order.order_detail.each do |order_detail| %>
+               <% order.order_details.each do |order_detail| %>
                <%= order_detail.item.name %><br>
                <% end %>
             </td>    
-    <td><%= (order.shipping_fee + order.billing_amount).to_s(:delimited) %>円</td>
+    <td><%= order.billing_amount.to_s(:delimited) %>円</td>
     <td><%= order.order_status_i18n %></td>
     <td><%= link_to "表示する", public_orders_path(order), class:'btn btn-primary text-white' %></td>
     </tr>

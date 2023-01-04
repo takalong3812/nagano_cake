@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
      @order.customer_id= current_customer.id
      @order.save
      current_customer.cart_items.each do |f|
-      OrderItem.create(order_id: order.id, item_id: f.item_id, order_amount: f.amount, price_after_tax: f.item.with_tax_price)       
+     OrderDetail.new(orders_id: @order.id, item_id: f.item_id, amount: f.amount, purchase_price: f.item.with_tax_price)       
       end
        current_customer.cart_items.destroy_all
        redirect_to public_orders_thanks_path
@@ -48,11 +48,10 @@ class Public::OrdersController < ApplicationController
    
    
    
-   def thanks
-   end
+   
    
    def index
-    @orders= Order.all
+    @orders= Order.where(customer_id: current_customer.id)
    end
    
    def show
@@ -61,6 +60,9 @@ class Public::OrdersController < ApplicationController
     else
       @oreder= Order.find(params[:id])
     end  
+   end
+   
+   def thanks
    end
    
    
