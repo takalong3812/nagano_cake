@@ -1,7 +1,7 @@
 class Public::CartItemsController < ApplicationController
     
   def index
-    @cart = CartItem.all
+    @cart_items = CartItem.all
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end

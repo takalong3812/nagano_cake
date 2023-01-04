@@ -19,8 +19,8 @@
      </div>   
           <h3><p class="font-weight-bold">お届け先</p></h3>
         <div>
-          <%= f.radio_button :address, 0, {:checked => true} %>
-          <%= f.label :address, "ご自身の住所" %>
+          <%= f.radio_button :select_address, 0, {:checked => true} %>
+          <%= f.label :select_address, "ご自身の住所" %>
             <section class="select">
             〒<%= current_customer.postal_code %><%= current_customer.address %>
             <%= current_customer.first_name %><%= current_customer.last_name %>
@@ -29,8 +29,8 @@
 
 
         <div>
-          <%= f.radio_button :address, 1 %>
-          <%= f.label :address, "登録済住所から選択" %></section>
+          <%= f.radio_button :select_address, 1 %>
+          <%= f.label :select_address, "登録済住所から選択" %></section>
           <br>
           <section class="select">
             <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address) %>
@@ -39,8 +39,8 @@
 
 
         <div>
-          <%= f.radio_button :address, 2 %>
-          <%= f.label :address, "新しいお届け先" %>
+          <%= f.radio_button :select_address, 2 %>
+          <%= f.label :select_address, "新しいお届け先" %>
           <br>
           <!--住所入力欄-->
           <div class="form-group row", style="padding-left:20px;">
