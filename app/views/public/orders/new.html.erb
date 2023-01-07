@@ -12,18 +12,18 @@
     <h3>支払方法</h3>
     <%= form_with model: @order, url:public_orders_confirm_path, local: true do |f| %>
      <div class="ml-5">
-        <%= f.radio_button :payment_method, @credit_card %>
-        <%= f.label :payment_method, @credit_card_ja %><br>
-        <%= f.radio_button :payment_method, @transfer %>
-        <%= f.label :payment_method, @transfer_ja %>
+        <%= f.radio_button :way_of_paying, @credit_card %>
+        <%= f.label :way_of_paying, @credit_card_ja %><br>
+        <%= f.radio_button :way_of_paying, @transfer %>
+        <%= f.label :way_of_paying, @transfer_ja %>
      </div>   
           <h3><p class="font-weight-bold">お届け先</p></h3>
         <div>
           <%= f.radio_button :select_address, 0, {:checked => true} %>
           <%= f.label :select_address, "ご自身の住所" %>
-            <section class="select">
+            <section>
             〒<%= current_customer.postal_code %><%= current_customer.address %>
-            <%= current_customer.first_name %><%= current_customer.last_name %>
+            <%= current_customer.last_name %><%= current_customer.first_name %>
             </section>
         </div>
 
@@ -32,9 +32,9 @@
           <%= f.radio_button :select_address, 1 %>
           <%= f.label :select_address, "登録済住所から選択" %></section>
           <br>
-          <section class="select">
-            <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address) %>
-          <section class="select">
+          <section>
+            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address, :address_display) %>
+          </section>
         </div>
 
 

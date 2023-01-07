@@ -8,7 +8,7 @@ class Order < ApplicationRecord
  validates :name, presence: true
  validates :way_of_paying, presence: true
     
- enum payment_method: { credit_card: 0, transfer: 1}
+ enum way_of_paying: { credit_card: 0, transfer: 1}
  enum order_status: { payment_waiting: 0, payment_finish:1, production: 2, ready_to_delivery: 3,delivery_finish: 4}
  
   

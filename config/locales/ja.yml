@@ -1,7 +1,7 @@
 ja:
  enums:
   order:
-   payment_method:
+   way_of_paying:
      credit_card: "クレジットカード"
      transfer: "銀行振込"
      
@@ -20,7 +20,7 @@ ja:
 ja:
  enums:
   order_detail:
-   product_status:
+   production_status:
      not_yet: "製作不可"
      waiting: "製作待ち"
      working: "製作中"
