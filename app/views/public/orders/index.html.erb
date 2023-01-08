@@ -22,10 +22,12 @@
          <%= order.name %><br>
      </td>
      <td>
-     
+      <% order.order_details.each do |order_detail| %>
+       <p><%= order_detail.item.name %></p>
+      <% end %> 
      </td>    
     <td><%= order.billing_amount %>円</td>
-    <td><%= order.order_status_i18n %></td>
+    <td><%= order.recieve_status_i18n %></td>
     <td><%= link_to "表示する", public_order_path(order), class:'btn btn-primary text-white' %></td>
     </tr>
   <% end %>

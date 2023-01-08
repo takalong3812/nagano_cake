@@ -47,8 +47,8 @@ class Public::OrdersController < ApplicationController
       @item.item_id= item.item_id
       @item.amount= item.amount
       @item.purchase_price= item.item.with_tax_price
-      @item.orders_id= @order.id 
-      @item.product_status= 'not_yet'
+      @item.order_id= @order.id 
+      @item.production_status= 'not_yet'
       @item.save
       end
       
@@ -64,11 +64,7 @@ class Public::OrdersController < ApplicationController
    end
    
    def show
-    if params[:id] == "confirm"
-    redirect_to new_public_order_path
-    else
-      @oreder= Order.find(params[:id])
-    end  
+      @order= Order.find(params[:id])
    end
    
    def thanks
@@ -80,7 +76,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :shipping_fee, :billing_amount, :order_status, :postal_code, :address, :name, :way_of_paying)
+    params.require(:order).permit(:customer_id, :shipping_fee, :billing_amount, :recieve_status, :postal_code, :address, :name, :way_of_paying)
   end
   
 end

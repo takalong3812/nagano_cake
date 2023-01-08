@@ -20,15 +20,15 @@
       <td><%= @order.address %></td>
     </tr>
     <tr>
-      <th>支払い方法</th>
-      <th><%= Order.payment_methods_i18n[@order.way_of_paying] %></th>
+      <th>支払方法</th>
+      <th><%= Order.way_of_payings %></th>
     </tr>
     <tr>
       <%= form_with(model: @order, url:admin_order_path, local: true) do |f| %>
       <th>注文ステータス</th>
       <td>
         
-        <%= f.select :status, ['入金待ち','入金確認','製作中','発送準備中','発送済み'], :selected => @order.status %>
+        <%= f.select :recieve_status, Order.recieve_statuses.keys.map{|k| [I18n.t("enums.order.recieve_status.#{k}"),k]} ,{},{class: 'form-control'}  %>
         <%= f.submit "更新", class:"btn btn-success" %>
       </td>
       <% end %>
@@ -46,7 +46,7 @@
          <th>製作ステータス</th>
        </thead>
        <tbody>
-         <% @order_details.each do |order_detail| %>
+         <% @order.order_details.each do |order_detail| %>
          <tr>
            <td><%= order_details. item.name %></td>
            <td><%= (order_detail.price).to_s(:delimited) %> 円</td>
@@ -58,7 +58,7 @@
                
                
                <%= form_with(model:[@order,oder_detail], url: admin_order_order_detail_path(@order,order_detail), local:true) do |f| %>
-                 <%= f.select :making_status, options_for([['着手不可'],['製作待ち'],['製作中'],['製作完了']],{:selected => order_details.making_status}) %>
+                 <%= f.select :production_status, options_for([['着手不可'],['製作待ち'],['製作中'],['製作完了']],{:selected => order_details.making_status}) %>
                  <%= f.submit "更新", class:"btn btn-success" %>
                <% end %>  
              </div>

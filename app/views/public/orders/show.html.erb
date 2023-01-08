@@ -8,7 +8,7 @@
       <tbody>
         <tr>
          <td>注文日</td>
-         <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+         <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
          <td>配送先</td>        
@@ -23,7 +23,7 @@
         </tr>
         <tr>
          <td>ステータス</td>
-         <td><%= @order.order_status_i18n %></td>
+         <td><%= @order.recieve_status_i18n %></td>
         </tr>
       </tbody>
     </table>
@@ -39,12 +39,12 @@
               <td width= "200">個数</td>
               <td width= "200">小計</td>
            </tr>
-        <% @order.order_items.each do |order_item| %>
+        <% @order.order_details.each do |order_detail| %>
            <tr>
-              <td><%= order_item.ietm.name %></td>
-              <td><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
-              <td><%= order_item.order_amount %></td>
-              <td><%= order_item.subtotal.to_s(:delimited) %></td>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.with_tax_price.to_s(:delimited) %>円</td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.subtotal.to_s(:delimited) %></td>
            </tr>
         <% end %>
       </table>

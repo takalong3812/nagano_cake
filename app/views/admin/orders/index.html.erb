@@ -1,32 +1,26 @@
-<div class="container">
-    <div class="row">
-     <h3>注文履歴一覧</h3>
-    <table class="col-12">
-     <tr>
-      <th>購入日時</th>
-      <th>購入者</th>
-      <th>注文個数</th>
-      <th>注文ステータス</th>
-     </tr>
-     <% @orders.each do |order| %>
-      <td>
-         <%= link_to admin_order_path(order.id) do %>
-           <%= order.created_at.to_s(:datetime_jp) %>
-         <% end %>
-      </td>    
-      <td><%= order.name %></td>
-      <td>
-         <%= order.order_details.sum(:amount) %>
-      </td>
-      <td>
-         <%= order.status %>
-      </td>
+<div class="p-5 ml-10 mr-10 w-80">
+  <h2><span class="bg-gray">注文履歴一覧</span></h2>
+  <table class="table">
+    <thead class="bg-gray">
+      <tr>
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.created_at.strftime("%Y/%m/%d"),admin_order_path(order.id) %></td>
+          <td><%= order.customer.first_name+order.customer.last_name %></td>
+          <td><%= order.order_details.sum(:amount) %></td>
+          <td><%= Order.recieve_statuses_i18n[order.recieve_status] %></td>
+        </tr>
+      <% end %>
     </tbody>
-    <% end %>
   </table>
- </div>
-
-
+</div>
 
 
       

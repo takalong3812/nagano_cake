@@ -9,7 +9,7 @@ class Order < ApplicationRecord
  validates :way_of_paying, presence: true
     
  enum way_of_paying: { credit_card: 0, transfer: 1}
- enum order_status: { payment_waiting: 0, payment_finish:1, production: 2, ready_to_delivery: 3,delivery_finish: 4}
+ enum recieve_status: { payment_waiting: 0, payment_finish:1, production: 2, ready_to_delivery: 3,delivery_finish: 4}
  
   
  def with_tax_price

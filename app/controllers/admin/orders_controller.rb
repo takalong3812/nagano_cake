@@ -1,29 +1,32 @@
 class Admin::OrdersController < ApplicationController
-    
-    
+
+  before_action :authenticate_admin!
+
   def index
-     @orders = Order.all
+    @orders = Order.all
   end
-  
+
   def show
-     @order = Order.find(params[:id])
-  end
-  
-  def confirm
-     @order = Order.new(order_params)
-     @order.postal_code = current_customer.postal_code
-     @order.address = current_customer.address
-     @order.name = current_customer.first_name + current_customer.last_name
-  end     
-     
-   private
+    @order = Order.find(params[:id])
    
-   def order_params
-      params.require(:order).permit(:status)
-   end  
-      
-      
+  end
 
+  def update
+    @order = Order.find(params[:id])
+    @order.update(order_status_params)
 
+    
+     if Order.recieve_status[@order.order_status]==1
+      @order.order_details.each do |order_detail|
+       order_detail.update(order_status:1)
+      end
+     end    
+   redirect_to admin_order_path(@order.id)
+  end
 
+  private
+
+  def order_params
+    params.require(:order).permit(:order_status)
+  end
 end
