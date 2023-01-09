@@ -8,6 +8,8 @@ class Admin::OrderDitailsController < ApplicationController
     @order_details= @order.order_details
   end 
   
+  
+    
   def update
     @order_detail= OrderDetail.find(params[:order_id])
     @order= @order_detail.order

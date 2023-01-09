@@ -8,7 +8,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-        redirect_to admin_item_path(@item.id), notice: "新商品登録完了！"
+     redirect_to admin_item_path(@item.id), notice: "新商品登録完了！"
     else
      frash.now[:alert] = "もう一度入力し直してください"
      render "index"

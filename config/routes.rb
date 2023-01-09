@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :customers, except: [:new, :create, :destroy]
     resources :orders
+    resources :order_details, only:[:update]
   end
   
     root to: 'homes#top'
