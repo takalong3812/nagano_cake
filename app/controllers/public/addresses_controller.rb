@@ -1,4 +1,6 @@
 class Public::AddressesController < ApplicationController
+#  protect_from_forgery    
+    
   def index
    @address= Address.new
    @addresses= Address.all      

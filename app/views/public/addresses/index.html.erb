@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
-        <h3 class="col-md-5">配送先登録/一覧</h2>
+        <h2 class="col-md-5">配送先登録/一覧</h2>
     </div>
-    <%= form_with model:@address,url:"addresses", local:true do |f| %>
+    <%= form_with model:@address,url:public_addresses_path, local:true do |f| %>
     
     
     
@@ -21,9 +21,9 @@
         <%= f.text_field :name, class: "col-xs-4 form-control-static name" %>
     </div>
     <%= f.submit '配送先を登録する' ,class: "col-xs-2 pull-right btn-lg btn-success " %>
-</div>
-<% end %>
 
+<% end %>
+</div>
 
    <table class="table table-hover table-bordered">
        <thead>
