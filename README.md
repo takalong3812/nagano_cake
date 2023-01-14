@@ -1,6 +1,8 @@
 
 # nagano_cake
 
+![nagano_cake](https://user-images.githubusercontent.com/117328822/212472236-46d44d8a-6e2c-4850-b9a5-829424fa38f1.jpg)
+
 ## サイト概要
 
 ### サイトテーマ
@@ -31,4 +33,5 @@ JSライブラリ：jQuery
 IDE：Cloud9
 
 ## 使用素材
-外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+
+ぱくたそ
